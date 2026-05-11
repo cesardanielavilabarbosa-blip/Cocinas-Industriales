@@ -222,3 +222,12 @@
     flex-wrap: wrap;
   }
 }
+
+.historial-lecturas.error-state {
+  background: linear-gradient(135deg, #3d1f1f 0%, #2d1f1f 100%);
+  border-left-color: #f44336;
+}
+
+.historial-lecturas.error-state .historial-vacio p {
+  color: #f44336;
+}

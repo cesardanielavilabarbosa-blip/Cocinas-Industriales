@@ -1,9 +1,17 @@
 import React from 'react';
 import '../styles/Alertas.css';
 
-const Alertas = ({ lectura }) => {
+const Alertas = ({ lectura, error }) => {
+  if (error) {
+    return (
+      <div className="alertas-section error-state">
+        <p>❌ No hay datos disponibles</p>
+      </div>
+    );
+  }
+
   if (!lectura) {
-    return <div className="alertas-section"><p>Cargando...</p></div>;
+    return <div className="alertas-section"><p>⏳ Cargando...</p></div>;
   }
 
   // Mapeo de estados a información de alerta

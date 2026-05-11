@@ -1,9 +1,17 @@
 import React from 'react';
 import '../styles/LecturaActual.css';
 
-const LecturaActual = ({ lectura }) => {
+const LecturaActual = ({ lectura, error }) => {
+  if (error) {
+    return (
+      <div className="lectura-actual error-state">
+        <p>❌ {error}</p>
+      </div>
+    );
+  }
+
   if (!lectura) {
-    return <div className="lectura-actual"><p>Cargando...</p></div>;
+    return <div className="lectura-actual"><p>⏳ Cargando...</p></div>;
   }
 
   // Formatear la fecha y hora

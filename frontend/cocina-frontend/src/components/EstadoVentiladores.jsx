@@ -1,9 +1,17 @@
 import React from 'react';
 import '../styles/EstadoVentiladores.css';
 
-const EstadoVentiladores = ({ lectura }) => {
+const EstadoVentiladores = ({ lectura, error }) => {
+  if (error) {
+    return (
+      <div className="estado-ventiladores error-state">
+        <p>❌ No hay datos disponibles</p>
+      </div>
+    );
+  }
+
   if (!lectura) {
-    return <div className="estado-ventiladores"><p>Cargando...</p></div>;
+    return <div className="estado-ventiladores"><p>⏳ Cargando...</p></div>;
   }
 
   const ventiladores = [

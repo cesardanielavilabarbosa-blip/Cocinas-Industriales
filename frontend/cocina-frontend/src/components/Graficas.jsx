@@ -11,11 +11,19 @@ import {
 } from 'recharts';
 import '../styles/Graficas.css';
 
-const Graficas = ({ lecturas }) => {
+const Graficas = ({ lecturas, error }) => {
+  if (error) {
+    return (
+      <div className="graficas-contenedor error-state">
+        <p>❌ No hay datos disponibles para las gráficas</p>
+      </div>
+    );
+  }
+
   if (!lecturas || lecturas.length === 0) {
     return (
       <div className="graficas-contenedor">
-        <p className="sin-datos">No hay datos disponibles para las gráficas</p>
+        <p className="sin-datos">⏳ Cargando datos...</p>
       </div>
     );
   }

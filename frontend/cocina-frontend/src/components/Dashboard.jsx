@@ -23,18 +23,8 @@ const Dashboard = () => {
         setError(null);
       } catch (err) {
         console.error('Error al cargar lectura:', err);
-        setError('Error al conectar con el servidor');
-        // Datos de prueba para desarrollo
-        setLectura({
-          temperatura: 34.5,
-          nivel_gas: 420,
-          llama_detectada: false,
-          ventilador_extraccion: true,
-          ventilador_inyeccion_1: true,
-          ventilador_inyeccion_2: false,
-          estado_sistema: 'NORMAL',
-          timestamp: new Date().toISOString(),
-        });
+        setError('❌ No se puede conectar al servidor. Asegúrate de que el backend está ejecutándose en localhost:8000');
+        setLectura(null);
       } finally {
         setCargando(false);
       }
@@ -48,60 +38,7 @@ const Dashboard = () => {
         setLecturas(lecturasList);
       } catch (err) {
         console.error('Error al cargar historial:', err);
-        // Datos de prueba para desarrollo
-        const lecturasPrueba = [
-          {
-            temperatura: 34.5,
-            nivel_gas: 420,
-            llama_detectada: false,
-            ventilador_extraccion: true,
-            ventilador_inyeccion_1: true,
-            ventilador_inyeccion_2: false,
-            estado_sistema: 'NORMAL',
-            timestamp: new Date(Date.now() - 0).toISOString(),
-          },
-          {
-            temperatura: 34.2,
-            nivel_gas: 418,
-            llama_detectada: false,
-            ventilador_extraccion: true,
-            ventilador_inyeccion_1: true,
-            ventilador_inyeccion_2: false,
-            estado_sistema: 'NORMAL',
-            timestamp: new Date(Date.now() - 5000).toISOString(),
-          },
-          {
-            temperatura: 34.1,
-            nivel_gas: 415,
-            llama_detectada: false,
-            ventilador_extraccion: true,
-            ventilador_inyeccion_1: true,
-            ventilador_inyeccion_2: false,
-            estado_sistema: 'NORMAL',
-            timestamp: new Date(Date.now() - 10000).toISOString(),
-          },
-          {
-            temperatura: 33.9,
-            nivel_gas: 412,
-            llama_detectada: false,
-            ventilador_extraccion: true,
-            ventilador_inyeccion_1: true,
-            ventilador_inyeccion_2: false,
-            estado_sistema: 'NORMAL',
-            timestamp: new Date(Date.now() - 15000).toISOString(),
-          },
-          {
-            temperatura: 33.8,
-            nivel_gas: 410,
-            llama_detectada: false,
-            ventilador_extraccion: true,
-            ventilador_inyeccion_1: true,
-            ventilador_inyeccion_2: false,
-            estado_sistema: 'NORMAL',
-            timestamp: new Date(Date.now() - 20000).toISOString(),
-          },
-        ];
-        setLecturas(lecturasPrueba);
+        setLecturas([]);
       }
     };
 
@@ -132,11 +69,11 @@ const Dashboard = () => {
       </div>
 
       <div className="dashboard-container">
-        <LecturaActual lectura={lectura} />
-        <EstadoVentiladores lectura={lectura} />
-        <Alertas lectura={lectura} />
-        <Graficas lecturas={lecturas} />
-        <HistorialLecturas lecturas={lecturas} />
+        <LecturaActual lectura={lectura} error={error} />
+        <EstadoVentiladores lectura={lectura} error={error} />
+        <Alertas lectura={lectura} error={error} />
+        <Graficas lecturas={lecturas} error={error} />
+        <HistorialLecturas lecturas={lecturas} error={error} />
       </div>
 
       {cargando && <div className="loading">Conectando con servidor...</div>}

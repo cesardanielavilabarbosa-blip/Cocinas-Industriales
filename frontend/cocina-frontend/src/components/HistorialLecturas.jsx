@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
 import '../styles/HistorialLecturas.css';
 
-const HistorialLecturas = ({ lecturas }) => {
+const HistorialLecturas = ({ lecturas, error }) => {
   const [pagina, setPagina] = useState(1);
   const itemsPorPagina = 10;
+
+  if (error) {
+    return (
+      <div className="historial-lecturas error-state">
+        <h3>Historial de Lecturas</h3>
+        <div className="historial-vacio">
+          <p>❌ No hay datos disponibles</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!lecturas || lecturas.length === 0) {
     return (
       <div className="historial-lecturas">
         <h3>Historial de Lecturas</h3>
         <div className="historial-vacio">
-          <p>No hay lecturas registradas</p>
+          <p>⏳ Cargando datos...</p>
         </div>
       </div>
     );
