@@ -6,26 +6,19 @@ import '../styles/HistorialPage.css';
 export default function HistorialPage() {
   const [lecturas, setLecturas] = useState([]);
   const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(null);
 
   const cargarHistorial = async () => {
     try {
       const data = await obtenerLecturas(100);
-      setLecturas(data);
+      // Validar si es array o un objeto con propiedad results
+      const lecturasList = Array.isArray(data) ? data : data.results || [];
+      setLecturas(lecturasList);
+      setError(null);
     } catch (err) {
       console.error('Error al cargar historial:', err);
-      // Fallback: Generate test data
-      const testData = Array.from({ length: 20 }, (_, i) => ({
-        id: i,
-        temperatura: 33.8 + Math.random() * 1.5,
-        nivel_gas: 410 + Math.random() * 30,
-        llama_detectada: Math.random() < 0.1,
-        estado_sistema: Math.random() < 0.9 ? 'NORMAL' : 'TEMPERATURA_ALTA',
-        extraccion: Math.random() < 0.8,
-        inyeccion_1: Math.random() < 0.9,
-        inyeccion_2: Math.random() < 0.5,
-        timestamp: new Date(Date.now() - i * 5000).toISOString(),
-      }));
-      setLecturas(testData);
+      setError('🔌 No se puede conectar al servidor');
+      setLecturas([]);
     }
     setCargando(false);
   };
@@ -43,8 +36,29 @@ export default function HistorialPage() {
         <p>Todos los registros del sistema</p>
       </div>
 
+      {error && (
+        <div
+          style={{
+            backgroundColor: '#c62828',
+            color: 'white',
+            padding: '15px',
+            borderRadius: '4px',
+            marginBottom: '20px',
+            fontWeight: 'bold',
+          }}
+        >
+          {error}
+        </div>
+      )}
+
       {cargando ? (
         <p>Cargando datos...</p>
+      ) : error ? (
+        <div style={{ textAlign: 'center', padding: '40px' }}>
+          <p style={{ fontSize: '24px', marginBottom: '10px' }}>🔌</p>
+          <p style={{ color: '#ff6b6b', fontSize: '18px', fontWeight: 'bold' }}>API Desconectada</p>
+          <p style={{ color: '#ff6b6b', fontSize: '14px' }}>No se puede conectar al servidor</p>
+        </div>
       ) : (
         <>
           <div className="historial-stats">

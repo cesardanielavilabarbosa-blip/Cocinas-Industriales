@@ -6,6 +6,7 @@ export default function AlertasPage() {
   const [lectura, setLectura] = useState(null);
   const [alertas, setAlertas] = useState([]);
   const [cargando, setCargando] = useState(true);
+  const [error, setError] = useState(null);
 
   const cargarDatos = async () => {
     try {
@@ -15,24 +16,12 @@ export default function AlertasPage() {
       ]);
       setLectura(lecturaData);
       setAlertas(alertasData);
+      setError(null);
     } catch (err) {
       console.error('Error al cargar alertas:', err);
-      // Fallback data
-      setLectura({
-        temperatura: 34.5,
-        nivel_gas: 420,
-        llama_detectada: false,
-        estado_sistema: 'NORMAL',
-        timestamp: new Date().toISOString(),
-      });
-      setAlertas([
-        {
-          id: 1,
-          tipo: 'NORMAL',
-          mensaje: 'Sistema funcionando normalmente',
-          timestamp: new Date().toISOString(),
-        },
-      ]);
+      setError('🔌 No se puede conectar al servidor');
+      setLectura(null);
+      setAlertas([]);
     }
     setCargando(false);
   };
@@ -61,8 +50,29 @@ export default function AlertasPage() {
         <p>Monitoreo en tiempo real del sistema</p>
       </div>
 
+      {error && (
+        <div
+          style={{
+            backgroundColor: '#c62828',
+            color: 'white',
+            padding: '15px',
+            borderRadius: '4px',
+            marginBottom: '20px',
+            fontWeight: 'bold',
+          }}
+        >
+          {error}
+        </div>
+      )}
+
       {cargando ? (
         <p>Cargando alertas...</p>
+      ) : error ? (
+        <div style={{ textAlign: 'center', padding: '40px' }}>
+          <p style={{ fontSize: '24px', marginBottom: '10px' }}>🔌</p>
+          <p style={{ color: '#ff6b6b', fontSize: '18px', fontWeight: 'bold' }}>API Desconectada</p>
+          <p style={{ color: '#ff6b6b', fontSize: '14px' }}>No se puede conectar al servidor</p>
+        </div>
       ) : (
         <>
           <div className="estado-actual" style={{ borderLeftColor: info.color }}>

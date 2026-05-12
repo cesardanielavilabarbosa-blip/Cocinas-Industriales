@@ -25,6 +25,7 @@ const Dashboard = () => {
         console.error('Error al cargar lectura:', err);
         setError('❌ No se puede conectar al servidor. Asegúrate de que el backend está ejecutándose en localhost:8000');
         setLectura(null);
+        setLecturas([]);
       } finally {
         setCargando(false);
       }
@@ -36,9 +37,13 @@ const Dashboard = () => {
         // Si es un array, usar directamente. Si es un objeto con 'results', usar eso.
         const lecturasList = Array.isArray(datos) ? datos : datos.results || [];
         setLecturas(lecturasList);
+        setError(null);
       } catch (err) {
         console.error('Error al cargar historial:', err);
         setLecturas([]);
+        if (!error) {
+          setError('❌ No se puede conectar al servidor. Asegúrate de que el backend está ejecutándose en localhost:8000');
+        }
       }
     };
 

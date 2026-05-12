@@ -7,7 +7,20 @@ const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    'Pragma': 'no-cache',
+    'Expires': '0',
   },
+});
+
+// Interceptor para agregar timestamp a las peticiones GET y prevenir caché
+api.interceptors.request.use((config) => {
+  if (config.method === 'get') {
+    // Agregar timestamp para evitar caché del navegador
+    config.params = config.params || {};
+    config.params._t = new Date().getTime();
+  }
+  return config;
 });
 
 /**

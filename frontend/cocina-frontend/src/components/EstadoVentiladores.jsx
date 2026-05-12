@@ -5,7 +5,9 @@ const EstadoVentiladores = ({ lectura, error }) => {
   if (error) {
     return (
       <div className="estado-ventiladores error-state">
-        <p>❌ No hay datos disponibles</p>
+        <h3>ESTADO DE VENTILADORES</h3>
+        <p style={{ color: '#ff6b6b', fontSize: '16px', marginTop: '20px', fontWeight: 'bold' }}>🔌 API Desconectada</p>
+        <p style={{ color: '#ff6b6b', fontSize: '14px' }}>No se puede conectar al servidor</p>
       </div>
     );
   }

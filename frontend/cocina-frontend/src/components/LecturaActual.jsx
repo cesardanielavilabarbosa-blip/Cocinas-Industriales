@@ -5,13 +5,17 @@ const LecturaActual = ({ lectura, error }) => {
   if (error) {
     return (
       <div className="lectura-actual error-state">
-        <p>❌ {error}</p>
+        <h2>ÚLTIMA LECTURA</h2>
+        <div style={{ color: '#ff6b6b', fontSize: '16px', marginTop: '20px', fontWeight: 'bold' }}>
+          🔌 API Desconectada
+        </div>
+        <p style={{ color: '#ff6b6b', marginTop: '10px', fontSize: '14px' }}>{error}</p>
       </div>
     );
   }
 
   if (!lectura) {
-    return <div className="lectura-actual"><p>⏳ Cargando...</p></div>;
+    return <div className="lectura-actual"><h2>ÚLTIMA LECTURA</h2><p>⏳ Conectando...</p></div>;
   }
 
   // Formatear la fecha y hora

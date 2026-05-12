@@ -18,40 +18,22 @@ export default function DashboardPage() {
       setError(null);
     } catch (err) {
       console.error('Error al cargar lectura:', err);
-      setError('Error al obtener datos');
-      // Fallback data
-      setLectura({
-        temperatura: 34.5,
-        nivel_gas: 420,
-        llama_detectada: false,
-        estado_sistema: 'NORMAL',
-        extraccion: true,
-        inyeccion_1: true,
-        inyeccion_2: false,
-        timestamp: new Date().toISOString(),
-      });
+      setError('🔌 No se puede conectar al servidor');
+      setLectura(null);
     }
   };
 
   const cargarHistorial = async () => {
     try {
       const data = await obtenerLecturas(100);
-      setLecturas(data);
+      // Validar si es array o un objeto con propiedad results
+      const lecturasList = Array.isArray(data) ? data : data.results || [];
+      setLecturas(lecturasList);
+      setError(null);
     } catch (err) {
       console.error('Error al cargar historial:', err);
-      // Fallback: Generate test data
-      const testData = Array.from({ length: 5 }, (_, i) => ({
-        id: i,
-        temperatura: 33.8 + Math.random() * 1,
-        nivel_gas: 410 + Math.random() * 20,
-        llama_detectada: false,
-        estado_sistema: 'NORMAL',
-        extraccion: true,
-        inyeccion_1: true,
-        inyeccion_2: false,
-        timestamp: new Date(Date.now() - i * 5000).toISOString(),
-      }));
-      setLecturas(testData);
+      setError('🔌 No se puede conectar al servidor');
+      setLecturas([]);
     }
     setCargando(false);
   };
@@ -72,10 +54,24 @@ export default function DashboardPage() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <LecturaActual lectura={lectura} />
-      <EstadoVentiladores lectura={lectura} />
-      <Alertas lectura={lectura} />
-      <Graficas lecturas={lecturas} />
+      {error && (
+        <div
+          style={{
+            backgroundColor: '#c62828',
+            color: 'white',
+            padding: '15px',
+            borderRadius: '4px',
+            marginBottom: '20px',
+            fontWeight: 'bold',
+          }}
+        >
+          {error}
+        </div>
+      )}
+      <LecturaActual lectura={lectura} error={error} />
+      <EstadoVentiladores lectura={lectura} error={error} />
+      <Alertas lectura={lectura} error={error} />
+      <Graficas lecturas={lecturas} error={error} />
     </div>
   );
 }

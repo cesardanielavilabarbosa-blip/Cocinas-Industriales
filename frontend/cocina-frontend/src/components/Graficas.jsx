@@ -15,7 +15,9 @@ const Graficas = ({ lecturas, error }) => {
   if (error) {
     return (
       <div className="graficas-contenedor error-state">
-        <p>❌ No hay datos disponibles para las gráficas</p>
+        <h3>GRÁFICAS DE MONITOREO</h3>
+        <p style={{ color: '#ff6b6b', fontSize: '16px', marginTop: '20px', fontWeight: 'bold' }}>🔌 API Desconectada</p>
+        <p style={{ color: '#ff6b6b', fontSize: '14px' }}>No se puede conectar al servidor</p>
       </div>
     );
   }

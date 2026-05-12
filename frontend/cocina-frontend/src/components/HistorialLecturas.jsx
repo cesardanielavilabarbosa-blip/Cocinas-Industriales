@@ -8,9 +8,10 @@ const HistorialLecturas = ({ lecturas, error }) => {
   if (error) {
     return (
       <div className="historial-lecturas error-state">
-        <h3>Historial de Lecturas</h3>
+        <h3>HISTORIAL DE LECTURAS</h3>
         <div className="historial-vacio">
-          <p>❌ No hay datos disponibles</p>
+          <p style={{ color: '#ff6b6b', fontSize: '16px', fontWeight: 'bold' }}>🔌 API Desconectada</p>
+          <p style={{ color: '#ff6b6b', fontSize: '14px' }}>No se puede conectar al servidor</p>
         </div>
       </div>
     );
