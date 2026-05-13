@@ -196,7 +196,7 @@ const Graficas = ({ lecturas, error }) => {
         <div className="stat-card">
           <span className="stat-label">Temperatura Actual</span>
           <span className="stat-valor">
-            {datosGrafica[datosGrafica.length - 1].temperatura}°C
+            {datosGrafica[0].temperatura}°C
           </span>
         </div>
         <div className="stat-card">
@@ -210,13 +210,13 @@ const Graficas = ({ lecturas, error }) => {
         <div className="stat-card">
           <span className="stat-label">Gas Actual</span>
           <span className="stat-valor">
-            {datosGrafica[datosGrafica.length - 1].gas} ppm
+            {datosGrafica[0].gas} ppm
           </span>
         </div>
         <div className="stat-card">
           <span className="stat-label">Presión Actual</span>
           <span className="stat-valor">
-            {datosGrafica[datosGrafica.length - 1].presion.toFixed(2)} hPa
+            {datosGrafica[0].presion.toFixed(2)} hPa
           </span>
         </div>
       </div>
