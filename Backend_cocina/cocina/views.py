@@ -58,6 +58,7 @@ class LecturaViewSet(viewsets.ModelViewSet):
                 'estado_actual': ultima.estado_sistema,
                 'temperatura': ultima.temperatura,
                 'nivel_gas': ultima.nivel_gas,
+                'presion': float(ultima.presion),
                 'llama_detectada': ultima.llama_detectada,
                 'ventiladores': {
                     'extraccion': ultima.ventilador_extraccion,

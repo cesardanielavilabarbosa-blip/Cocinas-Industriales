@@ -15,6 +15,7 @@ class Lectura(models.Model):
     # Datos de sensores
     temperatura = models.FloatField(help_text="Temperatura en °C")
     nivel_gas = models.IntegerField(help_text="Nivel de gas (0-1023)")
+    presion = models.DecimalField(max_digits=10, decimal_places=2, default=0, help_text="Presión en hPa")
     llama_detectada = models.BooleanField(default=False)
     
     # Estados de ventiladores

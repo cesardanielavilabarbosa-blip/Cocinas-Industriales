@@ -13,6 +13,7 @@ class LecturaSerializer(serializers.ModelSerializer):
             'id',
             'temperatura',
             'nivel_gas',
+            'presion',
             'llama_detectada',
             'ventilador_extraccion',
             'ventilador_inyeccion_1',
@@ -40,6 +41,14 @@ class LecturaSerializer(serializers.ModelSerializer):
         if not (0 <= value <= 1023):
             raise serializers.ValidationError(
                 f"nivel_gas debe estar entre 0 y 1023, recibido: {value}"
+            )
+        return value
+    
+    def validate_presion(self, value):
+        """Valida presión: debe estar en rango típico de presión atmosférica"""
+        if value and (value < 900 or value > 1100):
+            raise serializers.ValidationError(
+                f"Presión debe estar entre 900 y 1100 hPa, recibido: {value}"
             )
         return value
     

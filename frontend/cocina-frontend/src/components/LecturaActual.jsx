@@ -59,6 +59,11 @@ const LecturaActual = ({ lectura, error }) => {
         </div>
 
         <div className="lectura-card">
+          <span className="lectura-label">Presión</span>
+          <span className="lectura-valor">{lectura.presion} hPa</span>
+        </div>
+
+        <div className="lectura-card">
           <span className="lectura-label">Llama Detectada</span>
           <span className={`lectura-valor ${lectura.llama_detectada ? 'alerta' : 'normal'}`}>
             {lectura.llama_detectada ? 'SÍ' : 'NO'}

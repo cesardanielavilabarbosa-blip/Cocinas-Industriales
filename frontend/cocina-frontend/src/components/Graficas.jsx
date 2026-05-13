@@ -42,6 +42,7 @@ const Graficas = ({ lecturas, error }) => {
       }),
       temperatura: parseFloat(lectura.temperatura),
       gas: lectura.nivel_gas,
+      presion: parseFloat(lectura.presion),
     }));
 
   // Encontrar min y max para temperaturas
@@ -144,6 +145,51 @@ const Graficas = ({ lecturas, error }) => {
             </LineChart>
           </ResponsiveContainer>
         </div>
+
+        {/* Gráfica de Presión */}
+        <div className="grafica-card">
+          <h4>Presión vs Tiempo</h4>
+          <ResponsiveContainer width="100%" height={300}>
+            <LineChart
+              data={datosGrafica}
+              margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
+            >
+              <CartesianGrid
+                strokeDasharray="3 3"
+                stroke="rgba(255, 255, 255, 0.1)"
+              />
+              <XAxis
+                dataKey="tiempo"
+                stroke="#90caf9"
+                style={{ fontSize: '12px' }}
+              />
+              <YAxis
+                stroke="#90caf9"
+                label={{ value: 'hPa', angle: -90, position: 'insideLeft' }}
+                style={{ fontSize: '12px' }}
+              />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: '#1e1e1e',
+                  border: '1px solid #81c784',
+                  borderRadius: '8px',
+                }}
+                labelStyle={{ color: '#81c784' }}
+                formatter={(value) => [`${value.toFixed(2)} hPa`, 'Presión']}
+              />
+              <Legend wrapperStyle={{ paddingTop: '20px' }} />
+              <Line
+                type="monotone"
+                dataKey="presion"
+                stroke="#81c784"
+                dot={{ fill: '#81c784', r: 4 }}
+                activeDot={{ r: 6 }}
+                name="Presión"
+                strokeWidth={2}
+              />
+            </LineChart>
+          </ResponsiveContainer>
+        </div>
       </div>
 
       <div className="estadisticas-graficas">
@@ -165,6 +211,12 @@ const Graficas = ({ lecturas, error }) => {
           <span className="stat-label">Gas Actual</span>
           <span className="stat-valor">
             {datosGrafica[datosGrafica.length - 1].gas} ppm
+          </span>
+        </div>
+        <div className="stat-card">
+          <span className="stat-label">Presión Actual</span>
+          <span className="stat-valor">
+            {datosGrafica[datosGrafica.length - 1].presion.toFixed(2)} hPa
           </span>
         </div>
       </div>

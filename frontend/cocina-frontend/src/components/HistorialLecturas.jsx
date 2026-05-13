@@ -78,6 +78,7 @@ const HistorialLecturas = ({ lecturas, error }) => {
               <th>Fecha / Hora</th>
               <th>Temperatura</th>
               <th>Gas</th>
+              <th>Presión</th>
               <th>Llama</th>
               <th>Extracción</th>
               <th>Inyección 1</th>
@@ -96,6 +97,9 @@ const HistorialLecturas = ({ lecturas, error }) => {
                 </td>
                 <td className="celda-numero">
                   {lectura.nivel_gas}
+                </td>
+                <td className="celda-numero">
+                  {parseFloat(lectura.presion).toFixed(2)} hPa
                 </td>
                 <td className="celda-booleano">
                   {formatearBoleano(lectura.llama_detectada)}
