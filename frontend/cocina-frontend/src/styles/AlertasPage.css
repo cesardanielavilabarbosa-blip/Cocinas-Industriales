@@ -1,35 +1,12 @@
-.alertas-page {
-  padding: 30px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.alertas-header {
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.alertas-header h2 {
-  font-size: 2rem;
-  color: #fff;
-  margin: 0 0 10px 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.alertas-header p {
-  color: #a0aec0;
-  font-size: 1rem;
-  margin: 0;
+.terminal-content {
+  padding: 24px 28px;
 }
 
 .estado-actual {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  border: 2px solid #334155;
+  background: #202634;
+  border: 1px solid #30384c;
   border-left: 4px solid #667eea;
-  border-radius: 12px;
+  border-radius: 0;
   padding: 25px;
   display: flex;
   align-items: center;
@@ -96,8 +73,39 @@
 }
 
 .critica-card {
-  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-  border: 1px solid #334155;
+  background: #151a27;
+  border: 1px solid #293143;
+  padding: 15px;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: all 0.3s ease;
+}
+
+.critica-card.alerta {
+  background: #4d2a2a;
+  border-color: #d05b5b;
+}
+
+.critica-label {
+  color: #9aa9c2;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.critica-valor {
+  color: #dfe8fb;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.critica-rango {
+  color: #7b8bab;
+  font-size: 11px;
+}
+
   border-radius: 12px;
   padding: 20px;
   display: flex;

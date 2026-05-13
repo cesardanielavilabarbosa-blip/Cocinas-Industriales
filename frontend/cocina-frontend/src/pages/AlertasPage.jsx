@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { obtenerUltimaLectura, obtenerAlertas } from '../services/api';
+import '../styles/Dashboard.css';
 import '../styles/AlertasPage.css';
 
 export default function AlertasPage() {
@@ -19,7 +20,7 @@ export default function AlertasPage() {
       setError(null);
     } catch (err) {
       console.error('Error al cargar alertas:', err);
-      setError('🔌 No se puede conectar al servidor');
+      setError('No se puede conectar al servidor');
       setLectura(null);
       setAlertas([]);
     }
@@ -32,6 +33,11 @@ export default function AlertasPage() {
     return () => clearInterval(intervalo);
   }, []);
 
+  const estado = lectura?.estado_sistema || 'SIN DATOS';
+  const fecha = lectura?.timestamp
+    ? new Date(lectura.timestamp).toLocaleString('es-CO')
+    : '--';
+
   const estadoInfo = {
     NORMAL: { color: '#22c55e', icono: '✅', titulo: 'Sistema Normal', desc: 'Todo está funcionando correctamente' },
     TEMPERATURA_ALTA: { color: '#f97316', icono: '🌡️', titulo: 'Temperatura Elevada', desc: 'La temperatura excede el límite permitido' },
@@ -40,41 +46,38 @@ export default function AlertasPage() {
     EMERGENCIA: { color: '#7f1d1d', icono: '🚨', titulo: 'EMERGENCIA', desc: 'Situación crítica del sistema' },
   };
 
-  const estado = lectura?.estado_sistema || 'NORMAL';
   const info = estadoInfo[estado] || estadoInfo.NORMAL;
 
   return (
-    <div className="alertas-page">
-      <div className="alertas-header">
-        <h2>🔔 Centro de Alertas</h2>
-        <p>Monitoreo en tiempo real del sistema</p>
-      </div>
-
-      {error && (
-        <div
-          style={{
-            backgroundColor: '#c62828',
-            color: 'white',
-            padding: '15px',
-            borderRadius: '4px',
-            marginBottom: '20px',
-            fontWeight: 'bold',
-          }}
-        >
-          {error}
+    <main className="terminal-layout">
+      <header className="terminal-topbar">
+        <div>
+          <h1>Centro de Alertas</h1>
+          <span className={`topbar-status ${estado.toLowerCase().replaceAll('_', '-')}`}>
+            ● {error ? 'API DESCONECTADA' : estado.replaceAll('_', ' ')}
+          </span>
         </div>
-      )}
+        <div className="topbar-actions">
+          <span className="system-pill">Sistema Normal</span>
+          <button className="emergency-btn">Emergencia</button>
+        </div>
+      </header>
+
+      <section className="operation-banner">
+        <div>
+          <h2>● Estado operativo: {estado.replaceAll('_', ' ')}</h2>
+          <p>{error ? error : 'Todos los parámetros se encuentran dentro de los rangos configurados.'}</p>
+        </div>
+        <div className="last-reading">
+          <span>Última lectura</span>
+          <strong>{fecha}</strong>
+        </div>
+      </section>
 
       {cargando ? (
-        <p>Cargando alertas...</p>
-      ) : error ? (
-        <div style={{ textAlign: 'center', padding: '40px' }}>
-          <p style={{ fontSize: '24px', marginBottom: '10px' }}>🔌</p>
-          <p style={{ color: '#ff6b6b', fontSize: '18px', fontWeight: 'bold' }}>API Desconectada</p>
-          <p style={{ color: '#ff6b6b', fontSize: '14px' }}>No se puede conectar al servidor</p>
-        </div>
+        <div className="loading-panel">Conectando con servidor...</div>
       ) : (
-        <>
+        <div className="terminal-content">
           <div className="estado-actual" style={{ borderLeftColor: info.color }}>
             <div className="estado-icono">{info.icono}</div>
             <div className="estado-info">
@@ -125,8 +128,8 @@ export default function AlertasPage() {
               </div>
             )}
           </div>
-        </>
+        </div>
       )}
-    </div>
+    </main>
   );
 }

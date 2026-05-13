@@ -88,7 +88,6 @@ export default function DashboardPage() {
           <EstadoVentiladores lectura={lectura} error={error} />
           <Alertas lectura={lectura} error={error} />
           <Graficas lecturas={lecturas} error={error} />
-          <HistorialLecturas lecturas={lecturas} error={error} />
         </div>
       )}
     </main>

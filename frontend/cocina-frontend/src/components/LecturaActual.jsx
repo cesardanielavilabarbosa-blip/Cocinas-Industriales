@@ -49,29 +49,29 @@ const LecturaActual = ({ lectura, error }) => {
 
       <div className="lectura-grid">
         <div className="lectura-card">
-          <span className="lectura-label">Temperatura</span>
+          <span className="lectura-label">🌡️ Temperatura</span>
           <span className="lectura-valor">{lectura.temperatura}°C</span>
         </div>
 
         <div className="lectura-card">
-          <span className="lectura-label">Nivel de Gas</span>
+          <span className="lectura-label">💨 Nivel de Gas</span>
           <span className="lectura-valor">{lectura.nivel_gas}</span>
         </div>
 
         <div className="lectura-card">
-          <span className="lectura-label">Presión</span>
+          <span className="lectura-label">🌬️ Presión</span>
           <span className="lectura-valor">{lectura.presion} hPa</span>
         </div>
 
         <div className="lectura-card">
-          <span className="lectura-label">Llama Detectada</span>
+          <span className="lectura-label">🔥 Llama Detectada</span>
           <span className={`lectura-valor ${lectura.llama_detectada ? 'alerta' : 'normal'}`}>
             {lectura.llama_detectada ? 'SÍ' : 'NO'}
           </span>
         </div>
 
         <div className="lectura-card">
-          <span className="lectura-label">Estado del Sistema</span>
+          <span className="lectura-label">🖥️ Estado del Sistema</span>
           <span 
             className="lectura-valor estado"
             style={{ backgroundColor: getColorEstado(lectura.estado_sistema) }}
