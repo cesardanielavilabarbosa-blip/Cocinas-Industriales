@@ -1,57 +1,34 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import '../styles/Navbar.css';
 
 export default function Navbar() {
-  const [menuAbierto, setMenuAbierto] = useState(false);
-  const location = useLocation();
-
-  const estaActivo = (ruta) => location.pathname === ruta;
-
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          🔒 Monitor Cocina
-        </Link>
-
-        <button
-          className="navbar-toggle"
-          onClick={() => setMenuAbierto(!menuAbierto)}
-        >
-          {menuAbierto ? '✕' : '☰'}
-        </button>
-
-        <ul className={`nav-menu ${menuAbierto ? 'activo' : ''}`}>
-          <li className="nav-item">
-            <Link
-              to="/"
-              className={`nav-link ${estaActivo('/') ? 'activo' : ''}`}
-              onClick={() => setMenuAbierto(false)}
-            >
-              📊 Dashboard
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/historial"
-              className={`nav-link ${estaActivo('/historial') ? 'activo' : ''}`}
-              onClick={() => setMenuAbierto(false)}
-            >
-              📈 Historial
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/alertas"
-              className={`nav-link ${estaActivo('/alertas') ? 'activo' : ''}`}
-              onClick={() => setMenuAbierto(false)}
-            >
-              🔔 Alertas
-            </Link>
-          </li>
-        </ul>
+    <aside className="sidebar">
+      <div className="brand-block">
+        <div className="brand-title">Cocinas Industruales UIS</div>
+        <div className="brand-subtitle">Sector A · Industrial</div>
       </div>
-    </nav>
+
+      <nav className="sidebar-menu">
+        <NavLink to="/" className={({ isActive }) => `sidebar-link ${isActive ? 'activo' : ''}`}>
+          <span>▦</span>
+          Dashboard
+        </NavLink>
+        <NavLink to="/historial" className={({ isActive }) => `sidebar-link ${isActive ? 'activo' : ''}`}>
+          <span>▤</span>
+          Historial
+        </NavLink>
+        <NavLink to="/alertas" className={({ isActive }) => `sidebar-link ${isActive ? 'activo' : ''}`}>
+          <span>△</span>
+          Alertas
+        </NavLink>
+      </nav>
+
+      <div className="sidebar-footer">
+        <div className="sidebar-link muted"><span>⚒</span> Configuraciones</div>
+        <div className="sidebar-link muted"><span>↪</span> Salida</div>
+      </div>
+    </aside>
   );
 }

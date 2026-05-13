@@ -1,88 +1,86 @@
 .estado-ventiladores {
-  background: linear-gradient(135deg, #1a1f3a 0%, #212a4a 100%);
-  border-radius: 16px;
-  padding: 28px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 170, 0, 0.15);
-  border-left: 4px solid #ffaa00;
+  padding: 20px;
+  background: #1d2230;
+  border: 1px solid #32394d;
 }
 
-.estado-ventiladores h2 {
-  color: #ffaa00;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 20px 0;
+.estado-ventiladores h3 {
+  margin: 0 0 16px;
+  color: #c8d6ee;
+  font-size: 12px;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .ventiladores-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
 }
 
 .ventilador-card {
-  background: rgba(255, 170, 0, 0.05);
-  border-radius: 12px;
-  padding: 20px;
-  border: 1px solid rgba(255, 170, 0, 0.2);
+  padding: 16px 12px;
+  background: #151a27;
+  border: 1px solid #2e374c;
   text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-.ventilador-card:hover {
-  background: rgba(255, 170, 0, 0.08);
-  border-color: rgba(255, 170, 0, 0.4);
-  transform: translateY(-3px);
+.ventilador-card.activo {
+  border-color: rgba(34, 224, 125, .45);
+  background: linear-gradient(180deg, #182333, #121824);
+}
+
+.ventilador-icono {
+  color: #8fb1ff;
+  font-size: 24px;
 }
 
 .ventilador-nombre {
-  color: #ffaa00;
-  font-size: 13px;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin-bottom: 12px;
-  letter-spacing: 0.5px;
-}
-
-.ventilador-rpm {
-  color: #a0a9b8;
-  font-size: 12px;
-  margin-bottom: 16px;
-}
-
-.ventilador-estado {
-  display: inline-block;
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 700;
+  min-height: 34px;
+  margin-top: 10px;
+  color: #dce6f8;
+  font-size: 11px;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
-.ventilador-estado.activo {
-  background: rgba(0, 255, 136, 0.2);
-  color: #00ff88;
-  border: 1px solid rgba(0, 255, 136, 0.4);
+.estado-badge {
+  display: inline-flex;
+  margin-top: 8px;
+  padding: 5px 8px;
+  font-size: 10px;
+  font-weight: 1000;
+  letter-spacing: .7px;
 }
 
-.ventilador-estado.inactivo {
-  background: rgba(107, 122, 138, 0.2);
-  color: #a0a9b8;
-  border: 1px solid rgba(107, 122, 138, 0.4);
+.estado-badge.encendido {
+  color: #22e07d;
+  background: rgba(34, 224, 125, .12);
 }
 
-.ventilador-estado.apagado {
-  background: rgba(255, 68, 102, 0.2);
-  color: #ff8899;
-  border: 1px solid rgba(255, 68, 102, 0.4);
+.estado-badge.apagado {
+  color: #9aa9c2;
+  background: rgba(154, 169, 194, .1);
 }
 
-.estado-ventiladores.error-state {
-  background: linear-gradient(135deg, #3d1a1a 0%, #2d1a1f 100%);
-  border-left-color: #ff4466;
-  border-color: rgba(255, 68, 102, 0.2);
+.ventilador-indicador {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 0;
+  height: 3px;
+  background: #3a4358;
+}
+
+.ventilador-indicador.activo {
+  background: #22e07d;
+  box-shadow: 0 0 12px rgba(34, 224, 125, .8);
+}
+
+@media (max-width: 640px) {
+  .ventiladores-grid {
+    grid-template-columns: 1fr;
+  }
 }

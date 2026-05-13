@@ -3,7 +3,9 @@ import LecturaActual from '../components/LecturaActual';
 import EstadoVentiladores from '../components/EstadoVentiladores';
 import Alertas from '../components/Alertas';
 import Graficas from '../components/Graficas';
+import HistorialLecturas from '../components/HistorialLecturas';
 import { obtenerUltimaLectura, obtenerLecturas } from '../services/api';
+import '../styles/Dashboard.css';
 
 export default function DashboardPage() {
   const [lectura, setLectura] = useState(null);
@@ -18,7 +20,7 @@ export default function DashboardPage() {
       setError(null);
     } catch (err) {
       console.error('Error al cargar lectura:', err);
-      setError('🔌 No se puede conectar al servidor');
+      setError('No se puede conectar al servidor');
       setLectura(null);
     }
   };
@@ -26,13 +28,12 @@ export default function DashboardPage() {
   const cargarHistorial = async () => {
     try {
       const data = await obtenerLecturas(100);
-      // Validar si es array o un objeto con propiedad results
       const lecturasList = Array.isArray(data) ? data : data.results || [];
       setLecturas(lecturasList);
       setError(null);
     } catch (err) {
       console.error('Error al cargar historial:', err);
-      setError('🔌 No se puede conectar al servidor');
+      setError('No se puede conectar al servidor');
       setLecturas([]);
     }
     setCargando(false);
@@ -48,30 +49,48 @@ export default function DashboardPage() {
     return () => clearInterval(intervalo);
   }, []);
 
-  if (cargando) {
-    return <div style={{ padding: '20px', textAlign: 'center' }}>Cargando...</div>;
-  }
+  const estado = lectura?.estado_sistema || 'SIN DATOS';
+  const fecha = lectura?.timestamp
+    ? new Date(lectura.timestamp).toLocaleString('es-CO')
+    : '--';
 
   return (
-    <div style={{ padding: '20px' }}>
-      {error && (
-        <div
-          style={{
-            backgroundColor: '#c62828',
-            color: 'white',
-            padding: '15px',
-            borderRadius: '4px',
-            marginBottom: '20px',
-            fontWeight: 'bold',
-          }}
-        >
-          {error}
+    <main className="terminal-layout">
+      <header className="terminal-topbar">
+        <div>
+          <h1>Monitoreo</h1>
+          <span className={`topbar-status ${estado.toLowerCase().replaceAll('_', '-')}`}>
+            ● {error ? 'API DESCONECTADA' : estado.replaceAll('_', ' ')}
+          </span>
+        </div>
+        <div className="topbar-actions">
+          <span className="system-pill">Sistema Normal</span>
+          <button className="emergency-btn">Emergencia </button>
+        </div>
+      </header>
+
+      <section className="operation-banner">
+        <div>
+          <h2>● Estado operativo: {estado.replaceAll('_', ' ')}</h2>
+          <p>{error ? error : 'Todos los parámetros se encuentran dentro de los rangos configurados.'}</p>
+        </div>
+        <div className="last-reading">
+          <span>Última lectura</span>
+          <strong>{fecha}</strong>
+        </div>
+      </section>
+
+      {cargando ? (
+        <div className="loading-panel">Conectando con servidor...</div>
+      ) : (
+        <div className="terminal-content">
+          <LecturaActual lectura={lectura} error={error} />
+          <EstadoVentiladores lectura={lectura} error={error} />
+          <Alertas lectura={lectura} error={error} />
+          <Graficas lecturas={lecturas} error={error} />
+          <HistorialLecturas lecturas={lecturas} error={error} />
         </div>
       )}
-      <LecturaActual lectura={lectura} error={error} />
-      <EstadoVentiladores lectura={lectura} error={error} />
-      <Alertas lectura={lectura} error={error} />
-      <Graficas lecturas={lecturas} error={error} />
-    </div>
+    </main>
   );
 }

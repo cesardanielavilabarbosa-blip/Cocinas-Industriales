@@ -1,18 +1,14 @@
 .historial-lecturas {
-  background: linear-gradient(135deg, #1a1f3a 0%, #212a4a 100%);
-  border-radius: 16px;
-  padding: 28px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(0, 212, 255, 0.15);
-  border-left: 4px solid #00ff88;
+  padding: 20px;
+  background: #1d2230;
+  border: 1px solid #32394d;
 }
 
 .historial-lecturas h3 {
-  color: #00ff88;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 20px 0;
+  margin: 0 0 14px;
+  color: #c8d6ee;
+  font-size: 12px;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
@@ -20,137 +16,94 @@
 .historial-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  color: #6b7a8a;
-  font-size: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 14px;
+  color: #8fa0bd;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .tabla-contenedor {
   overflow-x: auto;
-  border-radius: 12px;
-  border: 1px solid rgba(0, 212, 255, 0.15);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid #2e374c;
 }
 
 .tabla-historial {
   width: 100%;
   border-collapse: collapse;
+  background: #151a27;
   font-size: 12px;
-  background: transparent;
 }
 
 .tabla-historial thead {
-  background: rgba(0, 212, 255, 0.08);
-  border-bottom: 2px solid rgba(0, 212, 255, 0.2);
+  background: #1d2535;
 }
 
 .tabla-historial th {
-  padding: 16px 12px;
+  padding: 13px 12px;
   text-align: left;
-  color: #00d4ff;
-  font-size: 11px;
-  font-weight: 700;
+  color: #9db9ff;
+  font-size: 10px;
+  font-weight: 1000;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.tabla-historial tbody tr {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
-}
-
-.tabla-historial tbody tr:hover {
-  background: rgba(0, 212, 255, 0.08);
+  letter-spacing: .8px;
 }
 
 .tabla-historial td {
-  padding: 14px 12px;
-  color: #ffffff;
+  padding: 12px;
+  color: #e6eefc;
+  border-top: 1px solid #2a3244;
+  font-weight: 700;
+}
+
+.tabla-historial tbody tr:hover {
+  background: rgba(118, 169, 255, .08);
 }
 
 .celda-fecha {
-  font-weight: 600;
-  color: #00d4ff;
+  color: #ffffff;
 }
 
 .celda-numero {
   text-align: center;
-  font-weight: 500;
 }
 
 .estado-badge {
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 11px;
-  font-weight: 700;
+  display: inline-flex;
+  padding: 5px 9px;
+  background: rgba(34, 224, 125, .12);
+  color: #22e07d;
+  font-size: 10px;
+  font-weight: 1000;
   text-transform: uppercase;
-  min-width: 80px;
-  text-align: center;
 }
 
 .paginacion {
+  margin-top: 16px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 12px;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.btn-pagina {
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
-  padding: 8px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-}
-
-.btn-pagina:hover:not(:disabled) {
-  background: rgba(0, 212, 255, 0.2);
-  border-color: rgba(0, 212, 255, 0.6);
-  transform: translateY(-2px);
-}
-
+.btn-pagina,
 .numero-pagina {
-  background: rgba(0, 212, 255, 0.1);
-  border: 1px solid rgba(0, 212, 255, 0.3);
-  color: #00d4ff;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 8px 12px;
+  background: #151a27;
+  border: 1px solid #2e374c;
+  color: #9db9ff;
   font-size: 11px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-}
-
-.numero-pagina:hover {
-  background: rgba(0, 212, 255, 0.2);
+  font-weight: 900;
+  cursor: pointer;
 }
 
 .numero-pagina.activo {
-  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-  color: #0a0e27;
-  font-weight: 700;
-  border-color: transparent;
+  background: #2d4771;
+  color: #fff;
 }
 
 .historial-vacio {
+  padding: 36px;
+  color: #9aa9c2;
   text-align: center;
-  padding: 40px 20px;
-  color: #00d4ff;
-}
-
-.historial-lecturas.error-state {
-  background: linear-gradient(135deg, #3d1a1a 0%, #2d1a1f 100%);
-  border-left-color: #ff4466;
-  border-color: rgba(255, 68, 102, 0.2);
+  font-weight: 800;
 }

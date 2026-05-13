@@ -1,63 +1,64 @@
-.alertas {
-  background: linear-gradient(135deg, #1a1f3a 0%, #212a4a 100%);
-  border-radius: 16px;
-  padding: 28px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 68, 102, 0.15);
-  border-left: 4px solid #ff4466;
+.alertas-section {
+  padding: 20px;
+  background: #1d2230;
+  border: 1px solid #32394d;
 }
 
-.alertas h2 {
-  color: #ff4466;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 20px 0;
+.alertas-section h3 {
+  margin: 0 0 16px;
+  color: #c8d6ee;
+  font-size: 12px;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
-.alerta-item {
-  background: rgba(255, 68, 102, 0.05);
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 12px;
-  border-left: 3px solid #ff4466;
-  display: flex;
-  justify-content: space-between;
+.alerta-principal {
+  min-height: 105px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 52px 1fr auto;
   align-items: center;
-  transition: all 0.3s ease;
+  gap: 14px;
+  background: #151a27;
+  border: 1px solid #2e374c;
+  border-left: 4px solid #22e07d;
 }
 
-.alerta-item:hover {
-  background: rgba(255, 68, 102, 0.08);
-  transform: translateX(4px);
-}
-
-.alerta-contenido {
-  flex: 1;
+.alerta-icono {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, .04);
+  font-size: 24px;
 }
 
 .alerta-titulo {
-  color: #ff8899;
+  font-size: 18px;
+  font-weight: 1000;
+  text-transform: uppercase;
+  letter-spacing: .8px;
+}
+
+.alerta-descripcion {
+  margin-top: 6px;
+  color: #9aa9c2;
   font-size: 13px;
   font-weight: 700;
+}
+
+.alerta-urgencia {
+  padding: 7px 10px;
+  color: #ff9d9d;
+  background: rgba(255, 122, 122, .1);
+  border: 1px solid rgba(255, 122, 122, .3);
+  font-size: 10px;
+  font-weight: 1000;
   text-transform: uppercase;
-  margin-bottom: 4px;
 }
 
-.alerta-mensaje {
-  color: #a0a9b8;
-  font-size: 12px;
-}
-
-.sin-alertas {
-  text-align: center;
-  padding: 40px 20px;
-  color: #00ff88;
-  font-size: 14px;
-}
-
-.alertas.error-state {
-  background: linear-gradient(135deg, #3d1a1a 0%, #2d1a1f 100%);
+.alertas-section.error-state {
+  background: #301c22;
+  border-color: #743741;
 }

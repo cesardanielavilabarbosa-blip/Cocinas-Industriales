@@ -1,120 +1,76 @@
 .graficas-seccion {
-  background: linear-gradient(135deg, #1a1f3a 0%, #212a4a 100%);
-  border-radius: 16px;
-  padding: 28px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(0, 212, 255, 0.15);
-  border-left: 4px solid #00d4ff;
+  padding: 20px;
+  background: #1d2230;
+  border: 1px solid #32394d;
 }
 
 .graficas-seccion h3 {
-  color: #00d4ff;
-  font-size: 16px;
-  font-weight: 700;
-  margin: 0 0 24px 0;
+  margin: 0 0 16px;
+  color: #c8d6ee;
+  font-size: 12px;
+  font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .graficas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  gap: 24px;
-  margin-bottom: 24px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
 }
 
 .grafica-card {
-  background: rgba(0, 212, 255, 0.03);
-  border-radius: 12px;
-  padding: 20px;
-  border: 1px solid rgba(0, 212, 255, 0.15);
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 18px;
+  background: #151a27;
+  border: 1px solid #2e374c;
 }
 
 .grafica-card h4 {
-  color: #00ff88;
-  font-size: 13px;
-  font-weight: 700;
-  margin: 0 0 16px 0;
+  margin: 0 0 14px;
+  color: #9db9ff;
+  font-size: 12px;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: .8px;
 }
 
-.grafica-card .recharts-surface { background: transparent !important; }
-.grafica-card .recharts-text { fill: #00d4ff; font-size: 11px; }
-.grafica-card .recharts-legend-wrapper { padding-top: 16px; }
-.grafica-card .recharts-legend-item-text { color: #00d4ff !important; font-size: 12px; }
-.sin-datos { color: #00d4ff; text-align: center; padding: 40px; font-size: 14px; }
-
 .estadisticas-graficas {
+  margin-top: 16px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 12px;
 }
 
 .stat-card {
-  background: rgba(0, 212, 255, 0.05);
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid rgba(0, 212, 255, 0.15);
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 14px;
+  background: #151a27;
+  border: 1px solid #2e374c;
 }
 
-.stat-card:hover {
-  background: rgba(0, 212, 255, 0.08);
-  border-color: rgba(0, 212, 255, 0.25);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 16px rgba(0, 212, 255, 0.1);
+.stat-label {
+  display: block;
+  color: #9aa9c2;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
 }
 
-.stat-label { color: #00d4ff; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; opacity: 0.8; }
-.stat-valor { color: #fff; font-size: 20px; font-weight: 800; letter-spacing: -0.3px; }
-.grafica-card .recharts-cartesian-axis-tick text { fill: #00d4ff !important; font-size: 11px; }
-.grafica-card .recharts-yAxis .recharts-cartesian-axis-tick text { fill: #00d4ff !important; }
-.grafica-card .recharts-tooltip-wrapper { outline: none; }
-.grafica-card .recharts-default-tooltip { border-radius: 8px; }
-
-@media (max-width: 1200px) { .graficas-grid { grid-template-columns: 1fr; } }
-@media (max-width: 768px) {
-  .graficas-seccion { padding: 16px; }
-  .grafica-card { padding: 12px; }
-  .grafica-card h4 { font-size: 13px; }
-  .estadisticas-graficas { grid-template-columns: repeat(2, 1fr); }
-  .stat-valor { font-size: 16px; }
-}
-@media (max-width: 480px) {
-  .graficas-seccion { padding: 12px; }
-  .graficas-grid { gap: 16px; }
-  .grafica-card { padding: 8px; }
-  .estadisticas-graficas { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .stat-card { padding: 8px 12px; }
-  .stat-label { font-size: 10px; }
-  .stat-valor { font-size: 14px; }
+.stat-valor {
+  display: block;
+  margin-top: 6px;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 1000;
 }
 
-.graficas-contenedor.error-state {
-  background: linear-gradient(135deg, #3d1a1a 0%, #2d1a1f 100%);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 68, 102, 0.2);
-  border-left: 4px solid #ff4466;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-  padding: 24px;
+.sin-datos {
+  color: #9aa9c2;
+  font-weight: 800;
 }
 
-.graficas-contenedor.error-state p {
-  color: #ff8899;
-  font-size: 14px;
-  font-weight: 500;
-  text-align: center;
-  margin: 0;
+@media (max-width: 1000px) {
+  .graficas-grid,
+  .estadisticas-graficas {
+    grid-template-columns: 1fr;
+  }
 }

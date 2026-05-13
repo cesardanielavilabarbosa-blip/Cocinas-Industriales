@@ -1,54 +1,102 @@
-.navbar {
-  background: linear-gradient(90deg, #0a0e27 0%, #111830 100%);
-  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
-  padding: 16px 24px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-}
-
-.navbar-content {
-  max-width: 1400px;
-  margin: 0 auto;
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 260px;
+  background: #0d111d;
+  border-right: 1px solid #22293a;
+  color: #e7eefc;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  z-index: 50;
 }
 
-.navbar-logo {
-  font-size: 18px;
+.brand-block {
+  padding: 26px 24px 24px;
+  border-bottom: 1px solid #1e2636;
+}
+
+.brand-title {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: .4px;
+  color: #dbe7ff;
+}
+
+.brand-subtitle {
+  margin-top: 6px;
+  font-size: 12px;
   font-weight: 700;
-  background: linear-gradient(135deg, #00d4ff 0%, #00ff88 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-decoration: none;
-  letter-spacing: 0.5px;
+  color: #8ea0bf;
 }
 
-.navbar-menu {
+.sidebar-menu {
+  padding: 24px 0;
   display: flex;
-  gap: 8px;
-  list-style: none;
+  flex-direction: column;
+  gap: 6px;
 }
 
-.navbar-link {
-  color: #a0a9b8;
+.sidebar-link {
+  height: 46px;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #c2cce0;
   text-decoration: none;
-  padding: 10px 16px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 600;
-  transition: all 0.3s ease;
   text-transform: uppercase;
-  letter-spacing: 0.3px;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .7px;
+  border-left: 4px solid transparent;
+  transition: .18s ease;
 }
 
-.navbar-link:hover {
-  color: #00d4ff;
-  background: rgba(0, 212, 255, 0.1);
+.sidebar-link span {
+  width: 18px;
+  color: #9fb5da;
+  font-size: 18px;
 }
 
-.navbar-link.activo {
-  color: #00d4ff;
-  background: rgba(0, 212, 255, 0.15);
-  border-bottom: 2px solid #00d4ff;
+.sidebar-link:hover,
+.sidebar-link.activo {
+  background: #263a57;
+  color: #ffffff;
+  border-left-color: #76a9ff;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+  padding: 0 0 24px;
+}
+
+.sidebar-link.muted {
+  cursor: default;
+  color: #9aabc8;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    min-height: auto;
+  }
+
+  .sidebar-menu,
+  .sidebar-footer {
+    flex-direction: row;
+    padding: 10px;
+    overflow-x: auto;
+  }
+
+  .sidebar-footer {
+    display: none;
+  }
+
+  .sidebar-link {
+    min-width: 145px;
+    border-left: 0;
+    border-radius: 10px;
+    justify-content: center;
+  }
 }
