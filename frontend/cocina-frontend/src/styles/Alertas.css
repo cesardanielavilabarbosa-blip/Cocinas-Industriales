@@ -1,147 +1,63 @@
-.alertas-section {
-  background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
-  border-radius: 12px;
-  padding: 24px;
+.alertas {
+  background: linear-gradient(135deg, #1a1f3a 0%, #212a4a 100%);
+  border-radius: 16px;
+  padding: 28px;
   margin-bottom: 24px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  border-left: 5px solid #ff9800;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 68, 102, 0.15);
+  border-left: 4px solid #ff4466;
 }
 
-.alertas-section h3 {
-  color: #fff;
+.alertas h2 {
+  color: #ff4466;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0 0 20px 0;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
 }
 
-.alerta-principal {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-  border-left: 5px solid;
+.alerta-item {
+  background: rgba(255, 68, 102, 0.05);
+  border-radius: 12px;
   padding: 16px;
+  margin-bottom: 12px;
+  border-left: 3px solid #ff4466;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
   transition: all 0.3s ease;
 }
 
-.alerta-principal:hover {
-  background: rgba(255, 255, 255, 0.08);
+.alerta-item:hover {
+  background: rgba(255, 68, 102, 0.08);
   transform: translateX(4px);
 }
 
-.alerta-icono {
-  font-size: 36px;
-  flex-shrink: 0;
-}
-
 .alerta-contenido {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  flex: 1;
 }
 
 .alerta-titulo {
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.alerta-descripcion {
+  color: #ff8899;
   font-size: 13px;
-  color: #b0bec5;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 4px;
 }
 
-.alerta-urgencia {
-  flex-shrink: 0;
-  background: rgba(244, 67, 54, 0.2);
-  color: #f44336;
-  padding: 8px 12px;
-  border-radius: 4px;
+.alerta-mensaje {
+  color: #a0a9b8;
   font-size: 12px;
-  font-weight: 600;
-  animation: pulse-alert 1s infinite;
 }
 
-/* Estados específicos */
-.alerta-principal.normal {
-  border-left-color: #4caf50;
-}
-
-.alerta-principal.temperatura_alta {
-  border-left-color: #ff9800;
-}
-
-.alerta-principal.gas_detectado {
-  border-left-color: #f44336;
-}
-
-.alerta-principal.llama_detectada {
-  border-left-color: #f44336;
-}
-
-.alerta-principal.emergencia {
-  border-left-color: #c62828;
-  background: rgba(198, 40, 40, 0.1);
-  animation: emergencia-blink 1s infinite;
-}
-
-@keyframes pulse-alert {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-@keyframes emergencia-blink {
-  0%, 100% {
-    background: rgba(198, 40, 40, 0.1);
-  }
-  50% {
-    background: rgba(198, 40, 40, 0.2);
-  }
-}
-
-@media (max-width: 768px) {
-  .alertas-section {
-    padding: 16px;
-  }
-
-  .alerta-principal {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .alerta-icono {
-    font-size: 28px;
-  }
-
-  .alerta-urgencia {
-    width: 100%;
-    text-align: center;
-  }
-}
-
-.alertas-section.error-state {
-  background: linear-gradient(135deg, #3d1f1f 0%, #2d1f1f 100%);
-  border-left-color: #f44336;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 150px;
-}
-
-.alertas-section.error-state p {
-  color: #f44336;
-  font-size: 16px;
-  font-weight: 500;
+.sin-alertas {
   text-align: center;
-  margin: 0;
+  padding: 40px 20px;
+  color: #00ff88;
+  font-size: 14px;
+}
+
+.alertas.error-state {
+  background: linear-gradient(135deg, #3d1a1a 0%, #2d1a1f 100%);
 }
