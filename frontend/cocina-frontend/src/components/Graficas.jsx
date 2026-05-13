@@ -191,35 +191,6 @@ const Graficas = ({ lecturas, error }) => {
           </ResponsiveContainer>
         </div>
       </div>
-
-      <div className="estadisticas-graficas">
-        <div className="stat-card">
-          <span className="stat-label">Temperatura Actual</span>
-          <span className="stat-valor">
-            {datosGrafica[0].temperatura}°C
-          </span>
-        </div>
-        <div className="stat-card">
-          <span className="stat-label">Temperatura Mín</span>
-          <span className="stat-valor">{minTemp}°C</span>
-        </div>
-        <div className="stat-card">
-          <span className="stat-label">Temperatura Máx</span>
-          <span className="stat-valor">{maxTemp}°C</span>
-        </div>
-        <div className="stat-card">
-          <span className="stat-label">Gas Actual</span>
-          <span className="stat-valor">
-            {datosGrafica[0].gas} ppm
-          </span>
-        </div>
-        <div className="stat-card">
-          <span className="stat-label">Presión Actual</span>
-          <span className="stat-valor">
-            {datosGrafica[0].presion.toFixed(2)} hPa
-          </span>
-        </div>
-      </div>
     </div>
   );
 };
