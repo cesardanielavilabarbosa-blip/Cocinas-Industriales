@@ -1,0 +1,18 @@
+# Datos crudos pesados (no versionar; ver README para dónde conseguirlos)
+analisis/datos_raw/
+*.AllData
+*.xlsm
+
+# Entornos y credenciales
+.env
+*.env.local
+venv/
+__pycache__/
+*.pyc
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# Checkpoints de notebooks
+.ipynb_checkpoints/
