@@ -1,0 +1,9 @@
+{
+  "appId": "com.tesis.alarmacocinas",
+  "appName": "Alarma Cocinas",
+  "webDir": "www",
+  "backgroundColor": "#0b1224",
+  "android": {
+    "allowMixedContent": true
+  }
+}

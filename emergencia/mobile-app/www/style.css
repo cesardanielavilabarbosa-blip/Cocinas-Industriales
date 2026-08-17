@@ -1,0 +1,114 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  height: 100%;
+  background: #0b1224;
+  color: white;
+  font-family: -apple-system, Roboto, system-ui, sans-serif;
+  overscroll-behavior: none;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.estado {
+  margin-top: 8px;
+  font-size: 13px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.estado--offline { background: #374151; color: #d1d5db; }
+.estado--online { background: #065f46; color: #d1fae5; }
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.circulo {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 1px;
+  transition: background 0.2s;
+}
+.circulo--reposo {
+  background: #1e293b;
+  border: 3px solid #334155;
+  color: #94a3b8;
+}
+.circulo--alarma {
+  background: #b91c1c;
+  border: 3px solid #ef4444;
+  color: white;
+  animation: pulso 0.6s infinite alternate;
+}
+
+@keyframes pulso {
+  from { transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0.6); }
+  to   { transform: scale(1.06); box-shadow: 0 0 0 24px rgba(239,68,68,0); }
+}
+
+.boton {
+  width: 100%;
+  max-width: 320px;
+  padding: 18px;
+  font-size: 17px;
+  font-weight: 600;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+}
+
+.boton--alarma {
+  background: #dc2626;
+  color: white;
+}
+.boton--alarma:active { background: #b91c1c; }
+
+.boton--detener {
+  background: #1e293b;
+  color: #94a3b8;
+  border: 1px solid #334155;
+}
+.boton--detener:disabled { opacity: 0.5; }
+.boton--detener:not(:disabled) {
+  background: #334155;
+  color: white;
+}
+
+footer {
+  margin-top: 24px;
+}
+
+.nota {
+  font-size: 12px;
+  color: #64748b;
+  text-align: center;
+  line-height: 1.5;
+}

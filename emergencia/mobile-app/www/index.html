@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+  <title>Alarma Cocinas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Pantalla de registro: se muestra solo la primera vez que se abre la app.
+       Es la base para el futuro sistema de usuarios (nombre + numero de
+       celular), para que el servidor sepa a que persona/celular avisarle. -->
+  <div id="pantalla-registro" class="pantalla">
+    <div class="registro-caja">
+      <h1>Bienvenido</h1>
+      <p class="nota">
+        Registra tu nombre y numero de celular. Por ahora se guardan solo en
+        este telefono; mas adelante serviran para que el servidor sepa a
+        quien avisarle cuando se dispare una alarma.
+      </p>
+
+      <label class="campo">
+        Nombre completo
+        <input id="input-nombre" type="text" placeholder="Ej: Ana Gomez" />
+      </label>
+
+      <label class="campo">
+        Numero de celular
+        <input id="input-telefono" type="tel" placeholder="Ej: 3001112233" />
+      </label>
+
+      <label class="campo">
+        Código de vinculación
+        <input id="input-codigo" type="text" inputmode="numeric" placeholder="Te lo da el administrador de tu cocina" />
+      </label>
+
+      <label class="campo">
+        IP del servidor en la red wifi
+        <input id="input-servidor" type="text" placeholder="Ej: 192.168.1.10:8000" />
+      </label>
+
+      <p id="error-registro" class="error oculto"></p>
+
+      <button id="btn-guardar-registro" class="boton boton--alarma">
+        Guardar y continuar
+      </button>
+    </div>
+  </div>
+
+  <!-- Pantalla principal de la alarma -->
+  <div id="app" class="pantalla oculto">
+
+    <header>
+      <h1>Sistema de Emergencia</h1>
+      <p id="saludo-usuario" class="saludo"></p>
+      <p id="estado-conexion" class="estado estado--offline">
+        Modo local (sin servidor conectado todavia)
+      </p>
+    </header>
+
+    <main>
+      <div id="circulo-estado" class="circulo circulo--reposo">
+        <span id="texto-circulo">EN REPOSO</span>
+      </div>
+
+      <!-- Botones normales: se ocultan durante la confirmacion -->
+      <div id="controles-normales" class="controles">
+        <button id="btn-simular" class="boton boton--alarma">
+          Simular alarma
+        </button>
+        <button id="btn-pedir-detener" class="boton boton--detener" disabled>
+          Detener alarma
+        </button>
+      </div>
+
+      <!-- Panel de doble confirmacion: aparece solo al intentar detener.
+           Exige DOS toques en botones distintos, en orden, antes de que
+           la alarma se apague de verdad. Esto evita que se detenga por
+           accidente en medio de una emergencia real. -->
+      <div id="panel-confirmacion" class="panel-confirmacion oculto">
+        <p class="confirmacion-titulo">Confirma que quieres detener la alarma</p>
+
+        <button id="btn-confirmar-1" class="boton boton--confirmar">
+          Confirmación 1 de 2 — Revisé la alarma
+        </button>
+
+        <button id="btn-confirmar-2" class="boton boton--confirmar" disabled>
+          Confirmación 2 de 2 — Detener definitivamente
+        </button>
+
+        <button id="btn-cancelar-confirmacion" class="boton boton--cancelar">
+          Cancelar, la alarma sigue sonando
+        </button>
+      </div>
+    </main>
+
+    <footer>
+      <p class="nota">
+        Por ahora la alarma solo se dispara localmente con el boton.
+        Mas adelante, el backend que ya envia WhatsApp y llamadas podra
+        activarla de forma remota en el celular de cada usuario registrado.
+      </p>
+    </footer>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
