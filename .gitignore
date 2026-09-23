@@ -16,3 +16,4 @@ Thumbs.db
 
 # Checkpoints de notebooks
 .ipynb_checkpoints/
+db.sqlite3
